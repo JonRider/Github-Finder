@@ -1,13 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-import Users from "./users/Users";
 import User from "./users/User";
-import Search from "./users/Search";
 import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
+import Home from "./components/pages/Home";
+import NotFound from "./components/pages/NotFound";
 import GithubState from "./context/github/GithubState";
-import AlertState from "./context/alert/Aler  tState";
+import AlertState from "./context/alert/AlertState";
 
 import "./App.css";
 
@@ -21,17 +21,10 @@ const App = () => {
             <div className="container">
               <Alert />
               <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <Fragment>
-                      <Search />
-                      <Users />
-                    </Fragment>
-                  }
-                />
+                <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path={`/user/:login`} element={<User />} />
+                <Route path={"/*"} element={<NotFound />} />
               </Routes>
             </div>
           </div>
